@@ -40,14 +40,6 @@ export const segAcademyQuestions: Question[] = [
     required: true,
   },
   {
-    id: 'trainerRating',
-    title: "How would you rate the trainer's teaching?",
-    subtitle: 'Based on clarity, concept delivery, and mentor dedication',
-    type: 'star_rating',
-    maxRating: 5,
-    required: true,
-  },
-  {
     id: 'practicalLearning',
     title: 'How was the practical learning experience?',
     subtitle: 'Real-time charts, live market analysis, and hands-on execution',
