@@ -3,11 +3,10 @@ import { LandingPage } from './pages/LandingPage';
 import { ReviewFlow } from './pages/ReviewFlow';
 import { ReviewResult } from './pages/ReviewResult';
 import { QRCodePage } from './pages/QRCodePage';
-import { Dashboard } from './pages/Dashboard';
 import { BrandInfo } from './types/brand';
 import { BRANDS_CONFIG } from './brands/brandConfig';
 
-type ActiveView = 'landing' | 'flow' | 'result' | 'qr' | 'dashboard';
+type ActiveView = 'landing' | 'flow' | 'result' | 'qr';
 
 interface ActiveReviewState {
   brand: BrandInfo;
@@ -31,8 +30,6 @@ export function App() {
 
       if (viewParam === 'qr') {
         setCurrentView('qr');
-      } else if (viewParam === 'dashboard' || viewParam === 'admin') {
-        setCurrentView('dashboard');
       } else if (brandParam && BRANDS_CONFIG[brandParam as keyof typeof BRANDS_CONFIG]) {
         setSelectedBrand(BRANDS_CONFIG[brandParam as keyof typeof BRANDS_CONFIG]);
         setCurrentView('flow');
@@ -70,7 +67,6 @@ export function App() {
         <LandingPage
           onSelectBrand={handleSelectBrand}
           onOpenQR={() => setCurrentView('qr')}
-          onOpenDashboard={() => setCurrentView('dashboard')}
         />
       )}
 
@@ -96,13 +92,6 @@ export function App() {
 
       {currentView === 'qr' && (
         <QRCodePage onBack={() => setCurrentView('landing')} />
-      )}
-
-      {currentView === 'dashboard' && (
-        <Dashboard
-          onBackToPortal={() => setCurrentView('landing')}
-          onOpenQR={() => setCurrentView('qr')}
-        />
       )}
     </div>
   );

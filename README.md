@@ -56,7 +56,6 @@ SEG ACADEMY (Parent Brand)
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 - **QR Engine**: `qrcode.react` (SVG high-resolution generation with center branding)
-- **Visual Analytics**: Recharts (Bar & Pie charts for reception statistics)
 - **Confetti**: Canvas-confetti
 
 ---
@@ -94,8 +93,7 @@ seg-qr-review/
 │   │   ├── LandingPage.tsx      # Unified parent company landing page
 │   │   ├── ReviewFlow.tsx       # Multi-step questionnaire with dynamic routing
 │   │   ├── ReviewResult.tsx     # AI review editor, languages, copy & Google review
-│   │   ├── QRCodePage.tsx       # Centralized reception counter tent QR preview
-│   │   └── Dashboard.tsx        # Frontend admin & analytics preview
+│   │   └── QRCodePage.tsx       # Centralized reception counter tent QR preview
 │   ├── services/
 │   │   ├── geminiService.ts     # Google Gemini API backend architecture abstraction
 │   │   ├── reviewGenerator.ts   # Rule-based natural review generator (EN/HI/Hinglish)

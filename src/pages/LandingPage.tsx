@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { QrCode, BarChart3, Sparkles, Shield, Award, CheckCircle2, Building2 } from 'lucide-react';
+import { QrCode, Sparkles, Shield, Award, CheckCircle2 } from 'lucide-react';
 import { BRAND_LIST } from '../brands/brandConfig';
 import { BrandCard } from '../components/BrandCard';
 import { BrandInfo } from '../types/brand';
@@ -8,13 +8,11 @@ import { BrandInfo } from '../types/brand';
 interface LandingPageProps {
   onSelectBrand: (brand: BrandInfo) => void;
   onOpenQR: () => void;
-  onOpenDashboard: () => void;
 }
 
 export const LandingPage: React.FC<LandingPageProps> = ({
   onSelectBrand,
   onOpenQR,
-  onOpenDashboard,
 }) => {
   return (
     <div className="min-h-screen bg-[#F7F3EC] text-[#1C1F26] flex flex-col selection:bg-[#0E1B33] selection:text-[#F7F3EC]">
@@ -29,22 +27,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             />
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center">
             <button
               onClick={onOpenQR}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-[#1C1F26] bg-[#EFE9DF] hover:bg-[#E5DDD0] transition-colors flex items-center gap-1.5 border border-[#E0D8CB]"
+              className="px-3 py-1.5 rounded-xl text-xs font-semibold text-[#1C1F26] bg-[#EFE9DF] hover:bg-[#E5DDD0] transition-colors flex items-center gap-1.5 border border-[#E0D8CB] cursor-pointer"
               title="View Reception QR Code"
             >
               <QrCode className="w-3.5 h-3.5 text-[#0E1B33]" />
-              <span className="text-[11px] sm:text-xs">QR Code</span>
-            </button>
-            <button
-              onClick={onOpenDashboard}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-[#0E1B33] hover:bg-slate-800 transition-colors flex items-center gap-1.5 shadow-xs"
-              title="Admin Analytics Dashboard"
-            >
-              <BarChart3 className="w-3.5 h-3.5 text-[#EFE9DF]" />
-              <span className="text-[11px] sm:text-xs">Analytics</span>
+              <span className="text-[11px] sm:text-xs">Reception QR</span>
             </button>
           </div>
         </div>
