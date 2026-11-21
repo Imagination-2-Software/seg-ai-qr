@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #F7F3EC;
+    --bg-secondary: #EFE9DF;
+    --card: #FDFCF9;
+    --card-surface: #EDE7DC;
+    --border-beige: #E6DFD3;
+    --border-beige-dark: #D4CBBE;
+    --text-primary: #1C1F26;
+    --text-secondary: #736B5E;
+    --brand-navy: #0E1B33;
+    --brand-gold: #C5A059;
+  }
+
+  body {
+    background-color: #F7F3EC;
+    color: #1C1F26;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Creative typography classes */
+.font-editorial {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-serif-accent {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Warm beige luxury scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F2ECE1;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CEBE;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BCB09E;
+}
+
+/* Luxury beige card styling */
+.beige-card {
+  background-color: #FDFCF9;
+  border: 1px solid #E6DFD3;
+  box-shadow: 0 2px 8px -2px rgba(28, 31, 38, 0.04), 0 1px 3px -1px rgba(28, 31, 38, 0.03);
+}
+
+.beige-card:hover {
+  border-color: #D4CBBE;
+  box-shadow: 0 6px 16px -4px rgba(28, 31, 38, 0.07);
+}
+
+/* Subtle luxury pulse */
+@keyframes warm-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.01); }
+}
+
+.animate-warm-glow {
+  animation: warm-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
