@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { QRCodeSVG } from 'qrcode.react';
 import { ArrowLeft, Download, Copy, Check, Printer, Sparkles } from 'lucide-react';
 
 interface QRCodePageProps {
@@ -23,15 +22,10 @@ export const QRCodePage: React.FC<QRCodePageProps> = ({ onBack }) => {
     }
   };
 
-  const handleDownloadSVG = () => {
-    const svgEl = document.getElementById('seg-central-qr');
-    if (!svgEl) return;
-    const svgData = new XMLSerializer().serializeToString(svgEl);
-    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
+  const handleDownloadQR = () => {
     const downloadLink = document.createElement('a');
-    downloadLink.href = url;
-    downloadLink.download = 'seg-academy-central-qr.svg';
+    downloadLink.href = '/3ba5ac01-53c1-4775-b3b0-d2acd4321ea5.jpg';
+    downloadLink.download = 'seg-academy-reception-qr.jpg';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
@@ -98,21 +92,12 @@ export const QRCodePage: React.FC<QRCodePageProps> = ({ onBack }) => {
           </div>
 
           {/* QR Code Container */}
-          <div className="inline-block p-4 bg-white rounded-2xl border border-[#E6DFD3] shadow-xs mb-5">
-            <QRCodeSVG
+          <div className="inline-block p-3 sm:p-4 bg-white rounded-2xl border border-[#E6DFD3] shadow-xs mb-5">
+            <img
               id="seg-central-qr"
-              value={qrUrl}
-              size={190}
-              level="H"
-              includeMargin={false}
-              imageSettings={{
-                src: '/brands/seg-mark.png',
-                x: undefined,
-                y: undefined,
-                height: 40,
-                width: 40,
-                excavate: true,
-              }}
+              src="/3ba5ac01-53c1-4775-b3b0-d2acd4321ea5.jpg"
+              alt="SEG Academy Central QR Code"
+              className="w-48 h-48 sm:w-52 sm:h-52 object-contain rounded-xl"
             />
           </div>
 
@@ -147,11 +132,11 @@ export const QRCodePage: React.FC<QRCodePageProps> = ({ onBack }) => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-5 print:hidden">
           <button
             type="button"
-            onClick={handleDownloadSVG}
+            onClick={handleDownloadQR}
             className="py-2.5 px-3 rounded-xl text-xs font-bold text-[#1C1F26] bg-[#FDFCF9] border border-[#E6DFD3] hover:bg-[#EFE9DF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5 text-[#736B5E]" />
-            <span>Download SVG</span>
+            <span>Download QR</span>
           </button>
 
           <button
