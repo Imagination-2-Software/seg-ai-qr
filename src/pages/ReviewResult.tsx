@@ -14,7 +14,6 @@ import confetti from 'canvas-confetti';
 import { BrandInfo } from '../types/brand';
 import { ReviewLanguage } from '../types/review';
 import { LanguageSelector } from '../components/LanguageSelector';
-import { GoogleReviewModal } from '../components/GoogleReviewModal';
 import { reviewGenerator } from '../services/reviewGenerator';
 import { storageService } from '../services/storageService';
 
@@ -42,7 +41,6 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
   const [variationSeed, setVariationSeed] = useState(0);
   const [isCopied, setIsCopied] = useState(false);
   const [autoCopiedNotice, setAutoCopiedNotice] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
 
   // Automatically copy review to clipboard on generation completion
@@ -123,25 +121,16 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
     }
   };
 
-  const handleOpenGoogle = async () => {
-    try {
-      await navigator.clipboard.writeText(reviewText);
-      setIsCopied(true);
-      setAutoCopiedNotice(true);
-      storageService.updateSubmission(submissionId, { isCopied: true, isGoogleClicked: true });
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.8 },
-      });
-    } catch {
-      // Fallback
-    }
-
-    // Directly open the brand's configured Google Review URL
-    if (brand.googleReviewUrl) {
-      window.open(brand.googleReviewUrl, '_blank', 'noopener,noreferrer');
-    }
+  const handleDirectPostClick = () => {
+    // Copy latest review text to clipboard immediately on tap
+    navigator.clipboard?.writeText(reviewText).catch(() => {});
+    setIsCopied(true);
+    storageService.updateSubmission(submissionId, { isCopied: true, isGoogleClicked: true });
+    confetti({
+      particleCount: 50,
+      spread: 60,
+      origin: { y: 0.8 },
+    });
   };
 
   return (
@@ -190,7 +179,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
             </span>
           </h1>
           <p className="text-xs text-[#736B5E] mt-1 max-w-xs mx-auto leading-relaxed">
-            Your answers have been synthesized into a natural review. You can customize, regenerate, or copy.
+            Your review is ready and copied to clipboard. Tap below to open Google directly, rate stars, and paste.
           </p>
         </div>
 
@@ -203,7 +192,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
             className="mb-4 p-3 rounded-xl bg-[#EAF5EC] border border-[#CDE5D2] text-[#1E5629] text-xs font-semibold flex items-center justify-center gap-2 shadow-2xs"
           >
             <Check className="w-4 h-4 text-emerald-700 stroke-[2.5]" />
-            <span>Review automatically copied to your clipboard! Ready to paste into Google.</span>
+            <span>Review automatically copied to clipboard! Ready to paste into Google.</span>
           </motion.div>
         )}
 
@@ -241,7 +230,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
               placeholder="Your review will appear here..."
             />
             <div className="flex items-center justify-between mt-1.5 text-[11px] text-[#8C8375] px-1">
-              <span>Feel free to edit before copying</span>
+              <span>Feel free to edit before posting</span>
               <span>{reviewText.length} chars</span>
             </div>
           </div>
@@ -251,7 +240,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
             <button
               type="button"
               onClick={handleCopy}
-              className={`py-3 px-4 rounded-xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 isCopied
                   ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                   : 'bg-[#EFE9DF] text-[#1C1F26] border-[#DDD5C7] hover:bg-[#E5DDD0]'
@@ -270,14 +259,22 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
               )}
             </button>
 
-            <button
-              type="button"
-              onClick={handleOpenGoogle}
-              className="py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#0E1B33] hover:bg-slate-800 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+            <a
+              href={brand.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleDirectPostClick}
+              className="py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#0E1B33] hover:bg-slate-800 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer text-center"
             >
               <span>Post on Google Reviews</span>
               <ExternalLink className="w-3.5 h-3.5 text-[#C5A059]" />
-            </button>
+            </a>
+          </div>
+
+          <div className="mt-2.5 text-center">
+            <p className="text-[11px] text-[#8C8375]">
+              ⭐ Tapping <strong>Post on Google Reviews</strong> directly opens {brand.title}'s Google page — just rate stars & paste!
+            </p>
           </div>
         </motion.div>
 
@@ -309,15 +306,6 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
           </p>
         </div>
       </main>
-
-      {/* Google Review Instructions Modal */}
-      <GoogleReviewModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        brand={brand}
-        reviewText={reviewText}
-        rating={rating}
-      />
     </div>
   );
 };
