@@ -22,7 +22,9 @@ export interface BrandInfo {
   category: string;
   categoryLabel: string;
   websiteUrl: string;
-  googleReviewUrl: string; // Placeholder or direct URL
+  googleReviewUrl: string; // Direct review dialog URL
+  googlePlaceId?: string;
+  googleFid?: string;
   isConfiguredGoogleUrl: boolean;
   logo: string;
   markLogo: string;
