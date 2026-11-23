@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   Sparkles,
@@ -68,6 +68,21 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
 
     copyImmediately();
   }, [initialReviewText, submissionId]);
+
+  // Dynamic universal review URL:
+  // - Mobile devices (Android/iOS): Google's verified Place ID review intent URL (opens Google Maps App / mobile review sheet directly)
+  // - Desktop browsers: Google Search with the exact #lrd modal trigger
+  const targetReviewUrl = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      const isMobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        window.innerWidth < 768;
+      if (isMobile && brand.googlePlaceId) {
+        return `https://search.google.com/local/writereview?placeid=${brand.googlePlaceId}`;
+      }
+    }
+    return brand.googleReviewUrl;
+  }, [brand]);
 
   const handleLanguageChange = (newLang: ReviewLanguage) => {
     setLanguage(newLang);
@@ -260,7 +275,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
             </button>
 
             <a
-              href={brand.googleReviewUrl}
+              href={targetReviewUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleDirectPostClick}
@@ -273,7 +288,7 @@ export const ReviewResult: React.FC<ReviewResultProps> = ({
 
           <div className="mt-2.5 text-center">
             <p className="text-[11px] text-[#8C8375]">
-              ⭐ Tapping <strong>Post on Google Reviews</strong> directly opens {brand.title}'s Google page — just rate stars & paste!
+              ⭐ Tapping <strong>Post on Google Reviews</strong> directly opens {brand.title}'s review page — just rate stars & paste!
             </p>
           </div>
         </motion.div>

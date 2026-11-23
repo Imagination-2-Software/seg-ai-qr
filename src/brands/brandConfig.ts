@@ -16,8 +16,10 @@ export const BRANDS_CONFIG: Record<BrandId, BrandInfo> = {
     category: 'Financial Education',
     categoryLabel: 'Stock Market & Financial Education',
     websiteUrl: 'https://www.segacademy.in/',
+    // Desktop Search with direct review modal trigger
     googleReviewUrl: 'https://www.google.com/search?kgmid=/g/11s32t4dfl&hl=en-IN&q=SEG+Academy+-+Premier+Stock+Market+Training+Institute+(Best+Stock+Market+Course+in+Varanasi)#lrd=0x398e2d95d4165209:0x3d47a5e16206bbe1,3',
-    googlePlaceId: 'ChIJCQlSFtSVLY45EeG7BmLhpUc9',
+    // Official Google Place ID for Mobile & Maps app direct review
+    googlePlaceId: 'ChIJCVIW1JUtjjkR4bsGYuGlRz0',
     googleFid: '0x398e2d95d4165209:0x3d47a5e16206bbe1',
     isConfiguredGoogleUrl: true,
     logo: '/SEGAcademy Training Workshop Logo.png',
@@ -49,8 +51,10 @@ export const BRANDS_CONFIG: Record<BrandId, BrandInfo> = {
     category: 'Career Counselling & Admissions',
     categoryLabel: 'Career Guidance & College Admissions',
     websiteUrl: 'https://careerdhara.com/',
+    // Desktop Search with direct review modal trigger
     googleReviewUrl: 'https://www.google.com/search?kgmid=/g/11yxzp4f40&hl=en-IN&q=CareerDhara#lrd=0x398e2d11e157ad5d:0x87fb7b159014fa35,3',
-    googlePlaceId: 'ChIJCV2tV-ERLY45ETX6FJAVe_uH',
+    // Official Google Place ID for Mobile & Maps app direct review
+    googlePlaceId: 'ChIJXa1X4REtjjkRNfoUkBV7-4c',
     googleFid: '0x398e2d11e157ad5d:0x87fb7b159014fa35',
     isConfiguredGoogleUrl: true,
     logo: '/brands/careerdhara-logo.png',
@@ -82,8 +86,10 @@ export const BRANDS_CONFIG: Record<BrandId, BrandInfo> = {
     category: 'IT Education & Technical Training',
     categoryLabel: 'Software Engineering & IT Education',
     websiteUrl: 'https://techogies.com/',
+    // Desktop Search with direct review modal trigger
     googleReviewUrl: 'https://www.google.com/search?kgmid=/g/11wfcf68r5&hl=en-IN&q=Techogies#lrd=0x398e2d1179d9d443:0x9a2c4809717983d1,3',
-    googlePlaceId: 'ChIJCUPU2XkRLY45EdGDeXEJSCya',
+    // Official Google Place ID for Mobile & Maps app direct review
+    googlePlaceId: 'ChIJQ9TZeREtjjkR0YN5cQlILJo',
     googleFid: '0x398e2d1179d9d443:0x9a2c4809717983d1',
     isConfiguredGoogleUrl: true,
     logo: '/brands/techogies-logo.png',
@@ -115,8 +121,10 @@ export const BRANDS_CONFIG: Record<BrandId, BrandInfo> = {
     category: 'AI, Robotics & STEM Education',
     categoryLabel: 'Robotics, Drones & STEM Innovation',
     websiteUrl: 'https://www.shorai.in/',
+    // Desktop Search with direct review modal trigger
     googleReviewUrl: 'https://www.google.com/search?kgmid=/g/11p1f339q5&hl=en-IN&q=SHORAI+by+SEG+Academy+%7C+AI+Robotics+%26+Drone+Labs#lrd=0x398e2d6d237509b7:0xf4c7ac189a75b30f,3',
-    googlePlaceId: 'ChIJCbcJdSNtLY45EQ-zdZoYrMf0',
+    // Official Google Place ID for Mobile & Maps app direct review
+    googlePlaceId: 'ChIJtwl1I20tjjkRD7N1mhisx_Q',
     googleFid: '0x398e2d6d237509b7:0xf4c7ac189a75b30f',
     isConfiguredGoogleUrl: true,
     logo: '/brands/shorai-logo.png',
@@ -148,8 +156,10 @@ export const BRANDS_CONFIG: Record<BrandId, BrandInfo> = {
     category: 'AI, Software & Digital Growth',
     categoryLabel: 'Custom Software, AI Automation & Growth Agency',
     websiteUrl: 'https://thei2s.com/',
+    // Desktop Search with direct review modal trigger
     googleReviewUrl: 'https://www.google.com/search?kgmid=/g/11jgyhnnnp&hl=en-IN&q=IMAGINATION2SOFTWARE#lrd=0x398e2ffbd72b9afd:0xf6fd8d19fbc4929a,3',
-    googlePlaceId: 'ChIJCf2aK9f7L445EZqSxPsZjf32',
+    // Official Google Place ID for Mobile & Maps app direct review
+    googlePlaceId: 'ChIJ_Zor1_svjjkRmpLE-xmN_fY',
     googleFid: '0x398e2ffbd72b9afd:0xf6fd8d19fbc4929a',
     isConfiguredGoogleUrl: true,
     logo: '/brands/i2s-logo.png',
